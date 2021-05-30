@@ -1,6 +1,4 @@
-//
-// Created by aleksandr on 29.05.2021.
-//
+// Copyright 2021 MIX-1 <danilonil1@yandex.ru>
 
 #ifndef TEMPLATE_HISTOGRAM_H
 #define TEMPLATE_HISTOGRAM_H
