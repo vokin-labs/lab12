@@ -2,7 +2,7 @@
 
 #ifndef TEMPLATE_STATSENDER_H
 #define TEMPLATE_STATSENDER_H
-#include "header.hpp"
+#include "header.h"
 #include "Log.h"
 #include <fstream>
 #include <string_view>

@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "PageContainer.h"
-#include "header.hpp"
+#include "header.h"
 #include "Log.h"
 #include "StatSender.h"
 #include "UsedMemory.h"

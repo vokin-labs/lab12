@@ -2,7 +2,7 @@
 
 #ifndef TEMPLATE_PAGECONTAINER_H
 #define TEMPLATE_PAGECONTAINER_H
-#include "header.hpp"
+#include "header.h"
 #include "Log.h"
 #include "StatSender.h"
 #include "UsedMemory.h"

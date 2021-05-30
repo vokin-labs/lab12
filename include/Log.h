@@ -2,7 +2,7 @@
 
 #ifndef TEMPLATE_LOG_H
 #define TEMPLATE_LOG_H
-#include "header.hpp"
+#include "header.h"
 
 class Log {
  public:

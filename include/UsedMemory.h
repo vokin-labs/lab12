@@ -2,7 +2,7 @@
 
 #ifndef TEMPLATE_USEDMEMORY_H
 #define TEMPLATE_USEDMEMORY_H
-#include "header.hpp"
+#include "header.h"
 #include "Log.h"
 
 class UsedMemory {
