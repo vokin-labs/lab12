@@ -30,16 +30,16 @@ void PageContainer::PrintTable() const {
 void PageContainer::RawLoad(std::istream& file) {
   std::vector<std::string> raw_data;
 
-  if(!file) throw std::runtime_error("file don`t open");
+  if (!file) throw std::runtime_error("file don`t open");
 
-  if(file.peek() == EOF)  throw std::runtime_error("file is empty");
+  if (file.peek() == EOF)  throw std::runtime_error("file is empty");
 
   Log::GetInstance().WriteDebug("file open");
 
   while (!file.eof()) {
     std::string line;
     std::getline(file, line, '\n');
-    if(IsCorrect(line)) raw_data.push_back(std::move(line));
+    if (IsCorrect(line)) raw_data.push_back(std::move(line));
   }
 
   if (raw_data.size() < kMinLines) {
@@ -88,14 +88,14 @@ void PageContainer::DataLoad(const float& threshold) {
 bool PageContainer::IsCorrect(string& line) {
   size_t counter = 0;
   bool status = true;
-  for(auto& ch : line){
-    if(ch == ' ') {
+  for (auto& ch : line){
+    if (ch == ' ') {
       ++counter;
-    } else if(counter == 0) {
+    } else if (counter == 0) {
       status = (ch >= '0' && ch <= '9') && status;
-    } else if(counter == 1) {
+    } else if (counter == 1) {
       status = ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) && status;
-    } else if(counter == 2) {
+    } else if (counter == 2) {
       status = (ch >= '0' && ch <= '9') && status;
     }
   }
