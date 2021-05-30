@@ -14,7 +14,7 @@ class UsedMemory {
   void OnRawDataLoad(const std::vector<std::string>& old_items,
                      const std::vector<std::string>& new_items);
 
-  size_t Used() const;
+  [[nodiscard]] size_t Used() const;
 
  private:
   size_t used_ = 0;

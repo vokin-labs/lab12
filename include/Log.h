@@ -8,19 +8,20 @@ class Log {
  public:
   static Log& GetInstance();
 
-  void Setting(const bool& level);
+  void Setting(bool level);
 
-  void Write(std::string_view message) const;
+  void Write(const std::string_view& message) const;
 
-  void WriteDebug(std::string_view message) const;
+  void WriteDebug(const std::string_view& message) const;
 
  private:
-  Log() = default;
+  Log(): level_(false), out_(&std::cout){};
+
   Log( const Log&) = delete;
   Log& operator=( Log& ) = delete;
 
-  bool level_{};
-  mutable std::ostream* out_{};
+  bool level_ = false;
+  mutable std::ostream* out_;
 };
 
 struct Item {

@@ -36,19 +36,35 @@ int main(const int argc, const char* argv[]) {
     if(vm.count("help")){
       cout << desc << endl;
     } else if(argc > 1){
-      Log::GetInstance().Setting(vm.count("log_status") == 1);
+      Log::GetInstance().Setting(vm.count("log_debug"));
       UsedMemory used_memory;
 
-      PageContainer page(&used_memory);
+      PageContainer page{};
       std::ifstream in(vm["input"].as<string>());
-      page.Load(in, vm["threshold"].as<int>());
 
-      Log::GetInstance().Write(std::to_string(used_memory.Used()));
+      page.RawLoad(in);
+      page.DataLoad(vm["threshold"].as<int>());
+
+      Log::GetInstance().Write("Used memory: " +
+                               std::to_string(used_memory.Used()));
+      Log::GetInstance().
+          Write("Number skips in this lap: " +
+                std::to_string(Histogram::GetInstance().GetNumSkip()));
+      Log::GetInstance().
+          Write("AVG score: " +
+                    std::to_string(Histogram::GetInstance().GetAvg()));
 
       page.PrintTable();
 
-      page.Reload(vm["threshold"].as<int>());
-      Log::GetInstance().Write(std::to_string(used_memory.Used()));
+      page.DataLoad(vm["threshold"].as<int>()+3);
+      Log::GetInstance().Write("Used memory: " +
+                               std::to_string(used_memory.Used()));
+      Log::GetInstance().
+          Write("Number skips in this lap: " +
+                std::to_string(Histogram::GetInstance().GetNumSkip()));
+      Log::GetInstance().
+          Write("AVG score: " +
+                std::to_string(Histogram::GetInstance().GetAvg()));
     } else {
       throw po::error(error_mes);
     }

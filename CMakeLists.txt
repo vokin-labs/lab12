@@ -37,7 +37,8 @@ add_library(${PROJECT_NAME} STATIC
         sources/Log.cpp
         sources/UsedMemory.cpp
         sources/StatSender.cpp
-        sources/PageContainer.cpp )
+        sources/PageContainer.cpp
+        sources/Histogram.cpp)
 
 add_executable(demo
   ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
@@ -56,7 +57,7 @@ if(BUILD_TESTS)
     # TODO: enum your files and delete this comment
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/test.cpp
   )
-  target_link_libraries(tests ${PROJECT_NAME} GTest::gtest_main)
+  target_link_libraries(tests ${PROJECT_NAME} GTest::gmock_main)
   enable_testing()
   add_test(NAME unit_tests COMMAND tests)
 endif()
